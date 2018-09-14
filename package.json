@@ -1,0 +1,22 @@
+{
+  "name": "lostnfound",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "create-react-app": "^1.5.2",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "mongodb": "^3.1.4",
+    "morgan": "~1.9.0",
+    "yarn": "^1.9.4"
+  },
+  "main": "index.js",
+  "author": "Orlando Sabogal and Daniel Cagua",
+  "license": "MIT"
+}
