@@ -7,8 +7,11 @@ This project is developed for the web development class of the Universidad de lo
 
 # Instalation
 The instalation can be done through the following steps:
+
 -Install NodeJS with ReactJS and ExpressJS packages
+
 -Install Yarn (npm Version)
+
 -Set a local or external database in MongoDB (Optional: Change the JSON available in data folder to load other set of items according to the format)
 
 ## Deployment
