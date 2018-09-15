@@ -35,7 +35,7 @@ const findDocuments = function(db, callback) {
   // Find some documents
   collection.find({} ,
     {fields:{_id:0}}
-    ).toArray(function(err, docs) {
+  ).toArray(function(err, docs) {
     assert.equal(err, null);
     console.log('Found lost objects', docs.length);
     console.log(docs);
@@ -47,8 +47,16 @@ const findDocuments = function(db, callback) {
 router.get('/getData', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
   getObject((data) =>
-  res.send(data)
+    res.send(data)
   );
 });
+
+/* //GET home page.
+router.get('/usuario', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  getObject((data) =>
+    res.send(data)
+  );
+}); */
 
 module.exports = router; 
