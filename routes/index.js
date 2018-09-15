@@ -21,8 +21,8 @@ function getObject(callback){
     const db = client.db(dbName);
     
     findDocuments(db, (data) => {
-        callback(data);
-        client.close();
+      callback(data);
+      client.close();
     });
     
     client.close();
@@ -33,7 +33,9 @@ const findDocuments = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('objetos');
   // Find some documents
-  collection.find({}).toArray(function(err, docs) {
+  collection.find({} ,
+    {fields:{_id:0}}
+    ).toArray(function(err, docs) {
     assert.equal(err, null);
     console.log('Found lost objects', docs.length);
     console.log(docs);
@@ -43,8 +45,9 @@ const findDocuments = function(db, callback) {
 
 /* GET home page. */
 router.get('/getData', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
   getObject((data) =>
-    res.send(data)
+  res.send(data)
   );
 });
 
