@@ -30,7 +30,7 @@ function getObject(callback){
 
 const findDocuments = function(db, callback) {
   // Get the documents collection
-  const collection = db.collection('objetos');
+  const collection = db.collection('lost');
   // Find some documents
   collection.find({} ,
     {fields:{_id:0}}
