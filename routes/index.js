@@ -1,10 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
-
-
 
 function getObject(callback){
   // Connection URL

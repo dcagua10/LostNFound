@@ -1,15 +1,42 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+mongoose.connect('mongodb://localhost:27017/lostNFound', function (err) {
+ 
+   if (err) throw err;
+ 
+   console.log('Successfully connected');
+ 
+});
 
 const UserSchema = new mongoose.Schema({
-  email:{
+  student_id:{
+    type: Number,
+    default: ''
+  },
+  name:{
+    type: String,
+    default: ''
+  },
+  lastname:{
+    type: String,
+    default: ''
+  },
+  login:{
     type: String,
     default: ''
   },
   password:{
     type:String,
     default: ''
+  },
+  email:{
+    type: String,
+    default: ''
+  },
+  avatar:{
+    type: String,
+    default: '/images/avatar_default.jpg'
   },
   isDeleted: {
     type: Boolean,

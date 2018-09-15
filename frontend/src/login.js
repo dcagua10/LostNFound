@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 
 /* import {
-  getFromStorage,
+  gimport Login from './login';
+etFromStorage,
   setInStorage,
 } from '../../utils/storage'; */
 
@@ -17,12 +18,20 @@ class Login extends Component {
       signInError: 'Error al iniciar sesión.',
       signInEmail: '',
       signInPassword: '',
+      signUpstudentId: '',
+      signUpname: '',
+      signUplastname: '',
+      signUplogin: '',
       signUpEmail: '',
       signUpPassword: '',
     };
 
     this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
     this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
+    this.onTextboxChangeSignUpStudentId = this.onTextboxChangeSignUpStudentId.bind(this);
+    this.onTextboxChangeSignUpName = this.onTextboxChangeSignUpName.bind(this);
+    this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(this);
+    this.onTextboxChangeSignUpLogin = this.onTextboxChangeSignUpLogin.bind(this);
     this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
     this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
@@ -55,6 +64,30 @@ class Login extends Component {
     });
   }
 
+  onTextboxChangeSignUpStudentId(event) {
+    this.setState({
+      signUpstudentId: event.target.value,
+    });
+  }
+
+  onTextboxChangeSignUpName(event) {
+    this.setState({
+      signUpname: event.target.value,
+    });
+  }
+
+  onTextboxChangeSignUpLastName(event) {
+    this.setState({
+      signUplastname: event.target.value,
+    });
+  }
+
+  onTextboxChangeSignUpLogin(event) {
+    this.setState({
+      signUplogin: event.target.value,
+    });
+  }
+
   onTextboxChangeSignUpPassword(event) {
     this.setState({
       signUpPassword: event.target.value,
@@ -64,6 +97,10 @@ class Login extends Component {
   onSignUp() {
     // Grab state
     const {
+      signUpname,
+      signUplastname,
+      signUplogin,
+      signUpstudentId,
       signUpEmail,
       signUpPassword,
     } = this.state;
@@ -79,8 +116,12 @@ class Login extends Component {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: signUpEmail,
+        student_id: signUpstudentId,
+        name: signUpname, 
+        lastname: signUplastname,
+        login: signUplogin,
         password: signUpPassword,
+        email: signUpEmail
       }),
     }).then(res => res.json())
       .then(json => {
@@ -108,6 +149,10 @@ class Login extends Component {
       signInError,
       signInEmail,
       signInPassword,
+      signUpstudentId,
+      signUpname,
+      signUplastname,
+      signUplogin,
       signUpEmail,
       signUpPassword,
       signUpError,
@@ -152,6 +197,30 @@ class Login extends Component {
               ) : (null)
             }
             <p>Sign Up</p>
+            <input
+              type="number"
+              placeholder="Codigo Uniandes"
+              value={signUpstudentId}
+              onChange={this.onTextboxChangeSignUpStudentId}
+            /><br />
+            <input
+              type="text"
+              placeholder="Nombre"
+              value={signUpname}
+              onChange={this.onTextboxChangeSignUpName}
+            /><br />
+            <input
+              type="text"
+              placeholder="Apellido"
+              value={signUplastname}
+              onChange={this.onTextboxChangeSignUpLastName}
+            /><br />
+            <input
+              type="text"
+              placeholder="Login"
+              value={signUplogin}
+              onChange={this.onTextboxChangeSignUpLogin}
+            /><br />
             <input
               type="email"
               placeholder="Email"
