@@ -322,6 +322,7 @@ class Login extends Component {
               onChange={this.onTextboxChangeSignUpPassword}
             /><br />
             <button onClick={this.onSignUp}>Sign Up</button>
+            
           </div>
 
         </div>
