@@ -17,6 +17,7 @@ class LostForm extends Component {
       objTags: ''
     };
     this.change = this.change.bind(this);
+    //this.onSubmit = this.onSubmit.bind(this);
   }
   
   change (event) {
@@ -71,7 +72,7 @@ class LostForm extends Component {
   
   render() {
     return (
-      <form>
+      <form onSubmit={this.handleSubmit}>
         <div className="form-group">
           <label>Que perdiste?</label>
           <input name ="objName" type="text" value={this.state.objName} onChange={this.change}/>
@@ -96,7 +97,7 @@ class LostForm extends Component {
           <label>Tags</label>
           <input name ="objTags" type="text" value={this.state.objTags} onChange={this.change}/>
         </div>
-        <button  onClick={this.onSubmit()}>Aceptar</button>
+        <button  onClick={e=>this.onSubmit(e)}>Aceptar</button>
       </form>
     );
   }

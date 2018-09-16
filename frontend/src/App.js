@@ -17,45 +17,45 @@ class App extends Component {
     return ( 
       // <Objeto objeto={obj}/>
       //<div key={obj.id}>{obj.foundby_first_name} - {obj.description} in {obj.place}</div>
-      <nav class="navbar navbar static-top navbar-expand-lg navbar-dark bg-dark">
-      <div class="navbar-expand" id="navbar">
-      <div class="navbar-nav">
-      <a class="navbar-brand" href="#">Welcome to LostNFound</a>
-    </div>
-    </div>
-    <div class="dividerRight"/>
-    <button class="btn btn-outline-info my-2 my-sm-0 pull-right" onclick="changeColor()">Sign In</button>
-    <div class="divider"/>
-    <button class="btn btn-outline-info my-2 my-sm-0 pull-right" onclick="changeColor()">Sign Up</button>
-    </nav>
+      <nav className="navbar navbar static-top navbar-expand-lg navbar-dark bg-dark">
+        <div className="navbar-expand" id="navbar">
+          <div className="navbar-nav">
+            <a className="navbar-brand" href="#">Welcome to LostNFound</a>
+          </div>
+        </div>
+        <div className="dividerRight"/>
+        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick="changeColor()">Sign In</button>
+        <div className="divider"/>
+        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick="changeColor()">Sign Up</button>
+      </nav>
     );
   }
   
   renderContent()
   {
     <div className="content">
-    {this.props.children}
-    </div>
+      {this.props.children}
+    </div>;
   }
   
   renderLowObjects()
   {
-    <footer class="page-footer font-small blue">
-    <div class="footer-copyright text-center py-3">© 2018 Copyright: Orlando Sabogal and Daniel Cagua
-    </div>
-    </footer>
+    <footer className="page-footer font-small blue">
+      <div className="footer-copyright text-center py-3">© 2018 Copyright: Orlando Sabogal and Daniel Cagua
+      </div>
+    </footer>;
   }
   
   render() {
     return (
       <div className="App">
-      {this.renderTopObjects()}
-      {this.renderContent()}
-      {this.renderLowObjects()}
+        {this.renderTopObjects()}
+        {this.renderContent()}
+        {this.renderLowObjects()}
       </div>
-      );
-    }
+    );
   }
+}
   
-  export default App;
+export default App;
   

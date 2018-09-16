@@ -37,7 +37,7 @@ const findDocuments = function(db, callback) {
   ).toArray(function(err, docs) {
     assert.equal(err, null);
     console.log('Found lost objects', docs.length);
-    console.log(docs);
+    //console.log(docs);
     callback(docs);
   });
 };
@@ -50,8 +50,8 @@ const findUser = function(db, callback) {
     {fields:{_id:0}}
   ).toArray(function(err, docs) {
     assert.equal(err, null);
-    console.log('Found lost objects', docs.length);
-    console.log(docs);
+    //console.log('Found lost objects', docs.length);
+    //console.log(docs);
     callback(docs);
   });
 };

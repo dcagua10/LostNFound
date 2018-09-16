@@ -14,11 +14,11 @@ class LostObjects extends Component {
   }
     
   componentDidMount(){
-    fetch('/getData')
+    fetch('/getData/found')
       .then((res) => {
         return res.json();
       })
-    //.then((json) => this.setState({foundObjects:json}))
+      .then((json) => this.setState({foundObjects:json}))
       .catch((err) => console.log(err));
   }
     
