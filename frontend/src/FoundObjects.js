@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './LFObjects.css';
 
-class LostObjects extends Component {
+class FoundObjects extends Component {
     
   constructor(props){
     super(props);
@@ -59,5 +59,5 @@ class LostObjects extends Component {
   }
 }
     
-export default LostObjects;
+export default FoundObjects;
     
