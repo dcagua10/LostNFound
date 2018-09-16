@@ -18,12 +18,12 @@ class LostObjects extends Component {
         .then((res) => {
             return res.json();
         })
-        .then((json) => this.setState({foundObjects:json}))
+        //.then((json) => this.setState({foundObjects:json}))
         .catch((err) => console.log(err));
     }
     
     renderObjects() {
-        return this.state.lostObjects.map((obj) => 
+        return this.state.foundObjects.map((obj) => 
         // <Objeto objeto={obj}/>
         <div class="card" key={obj.object_id}>
         <img src="images/object_default.jpg" alt="Avatar"/>
@@ -42,8 +42,8 @@ class LostObjects extends Component {
     
     render() {
         return (
-            <div className="lostObjects">
-            <h1>Lost Objects List</h1>
+            <div className="foundObjects">
+            <h1>Found Objects List</h1>
             {
                 <div class="grid-container">
                 <div class="grid-item">
