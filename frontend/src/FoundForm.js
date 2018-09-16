@@ -130,7 +130,7 @@ class FoundForm extends React.Component {
               type="text"
               className="form-control"
               id="description"
-              placeholder="I found this att..."
+              placeholder="I found this at..."
               onChange={this.handleChange}
               required
             />
