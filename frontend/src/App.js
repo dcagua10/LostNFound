@@ -20,7 +20,7 @@ class App extends Component {
       <nav className="navbar navbar static-top navbar-expand-lg navbar-dark bg-dark">
         <div className="navbar-expand" id="navbar">
           <div className="navbar-nav">
-            <a className="navbar-brand" href="#">Welcome to LostNFound</a>
+            <a className="navbar-brand">Welcome to LostNFound</a>
           </div>
         </div>
         <div className="dividerRight"/>
