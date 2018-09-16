@@ -11,8 +11,8 @@ import FoundForm from './FoundForm'
 
 ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<Login />, document.getElementById('login'));
-ReactDOM.render(<LostObjects />, document.getElementById('lostobjects'));
-ReactDOM.render(<LostForm />, document.getElementById('lostForm'));
-ReactDOM.render(<FoundObjects />, document.getElementById('foundobjects'));
-ReactDOM.render(<FoundForm />, document.getElementById('foundForm'))
+//ReactDOM.render(<LostObjects />, document.getElementById('lostobjects'));
+//ReactDOM.render(<LostForm />, document.getElementById('lostForm'));
+//ReactDOM.render(<FoundObjects />, document.getElementById('foundobjects'));
+//ReactDOM.render(<FoundForm />, document.getElementById('foundForm'))
 registerServiceWorker();
