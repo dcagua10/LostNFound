@@ -1,18 +1,18 @@
-import React from "react";
+import React from 'react';
 
 class FoundForm extends React.Component {
   constructor() {
     super();
     this.state = {
-      object_id:"",
-      object_name: "",
-      image: "",
-      foundby_first_name:"",
-      foundby_last_name: "",
-      foundby_login: "",
-      date:"",
-      place: "",
-      description: "",
+      object_id:'',
+      object_name: '',
+      image: '',
+      foundby_first_name:'',
+      foundby_last_name: '',
+      foundby_login: '',
+      date:'',
+      place: '',
+      description: '',
       tags: []
     };
 
@@ -22,7 +22,7 @@ class FoundForm extends React.Component {
   
   handleChange(event) {
     console.log(event.target.id);
-/*     let object_name = event.target.value;
+    /*     let object_name = event.target.value;
     let image = event.target.input;
     let value = event.target.value;
     let date = event.target.value;
@@ -35,34 +35,34 @@ class FoundForm extends React.Component {
   }
   
   post() {
-    fetch("/api/postFoundObject", {
+    fetch('/api/postFoundObject', {
       body: JSON.stringify(this.state),
-      method: "POST",
+      method: 'POST',
       headers: {
-        "content-type": "application/json"
+        'content-type': 'application/json'
       }
     }).then(function(res) {
-      if (res.status === 200) alert("The object found was added");
-      else alert("There is an error, try again");
+      if (res.status === 200) alert('The object found was added');
+      else alert('There is an error, try again');
       console.log(res);
     });
   }
   
   handleSubmit(event) {
     console.log(this.state);
-    alert("Loading your post, please wait");
+    alert('Loading your post, please wait');
     this.post();
     event.preventDefault();
     this.setState({
       object_id: Math.random(),
-      object_name: "",
-      image: "",
-      foundby_first_name:"Nombre",
-      foundby_last_name: "Apellido",
-      foundby_login: "Nombre.Apellido10",
-      date:"",
-      place: "",
-      description: "",
+      object_name: '',
+      image: '',
+      foundby_first_name:'Nombre',
+      foundby_last_name: 'Apellido',
+      foundby_login: 'Nombre.Apellido10',
+      date:'',
+      place: '',
+      description: '',
       tags: []
     });
   }
@@ -70,116 +70,116 @@ class FoundForm extends React.Component {
   render() {
     return (
       <div className="container">
-      <h1>Add a new object found</h1>
-      <h3>In this way you help us to grow</h3>
-      <form onSubmit={this.handleSubmit}>
-      <div className="form-group">
-      <label htmlFor="object_name">Object name</label>
-      <input
-      value={this.state.object_name}
-      type="text"
-      className="form-control"
-      id="object_name"
-      placeholder="Charger"
-      onChange={this.handleChange}
-      required
-      />
-      </div>
-      <div className="form-group">
-      <label htmlFor="image">Image</label>
-      <input
-      value={this.state.image}
-      type="text"
-      className="form-control"
-      id="image"
-      aria-describedby="img"
-      placeholder="https://image.ibb.co/jL9oge/Unbenched_Emote.png"
-      onChange={this.handleChange}
-      required
-      />
-      <small id="img" className="form-text text-muted">
-      you must upload the url link with the extension of your image{" "}
-      </small>
-      </div>
-      <div className="form-group">
-      <label htmlFor="image_uploads">Image File</label>
-      <input 
-      value={this.state.input}
-      type="file"
-      className="form-control"
-      aria-describedby="objimg"
-      id="image_uploads" 
-      name="image_uploads"
-      accept="image/*"
-      onChange={this.handleChange}
-      required
-      />
-      <div class="preview">
-      <p>No files currently selected for upload</p>
-      </div>
-      <small id="img" className="form-text text-muted">
-      You must upload a file with img format{" "}
-      </small>
-      </div>
-      <div className="form-group">
-      <label htmlFor="date">Date</label>
-      <input
-      value={this.state.date}
-      type="text"
-      className="form-control"
-      id="date"
-      placeholder="MM/DD/AAAA"
-      onChange={this.handleChange}
-      required
-      />
-      </div>
-      <div className="form-group">
-      <label htmlFor="place">Place</label>
-      <input
-      value={this.state.place}
-      type="text"
-      className="form-control"
-      id="place"
-      placeholder="ML | LL | SD | Tx"
-      onChange={this.handleChange}
-      required
-      />
-      </div>
-      <div className="form-group">
-      <label htmlFor="description">Description</label>
-      <input
-      value={this.state.description}
-      type="text"
-      className="form-control"
-      id="description"
-      placeholder="I found this at..."
-      onChange={this.handleChange}
-      required
-      />
-      </div>
-      <div className="form-group">
-      <label htmlFor="tags">Tags</label>
-      <input
-      value={this.state.tags}
-      type="text"
-      className="form-control"
-      id="tags"
-      aria-describedby="tags"
-      placeholder="Charger,Black,Small"
-      onChange={this.handleChange}
-      required
-      />
-      <small id="ingre" className="form-text text-muted">
+        <h1>Add a new object found</h1>
+        <h3>In this way you help us to grow</h3>
+        <form onSubmit={this.handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="object_name">Object name</label>
+            <input
+              value={this.state.object_name}
+              type="text"
+              className="form-control"
+              id="object_name"
+              placeholder="Charger"
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="image">Image</label>
+            <input
+              value={this.state.image}
+              type="text"
+              className="form-control"
+              id="image"
+              aria-describedby="img"
+              placeholder="https://image.ibb.co/jL9oge/Unbenched_Emote.png"
+              onChange={this.handleChange}
+              required
+            />
+            <small id="img" className="form-text text-muted">
+      you must upload the url link with the extension of your image{' '}
+            </small>
+          </div>
+          <div className="form-group">
+            <label htmlFor="image_uploads">Image File</label>
+            <input 
+              value={this.state.input}
+              type="file"
+              className="form-control"
+              aria-describedby="objimg"
+              id="image_uploads" 
+              name="image_uploads"
+              accept="image/*"
+              onChange={this.handleChange}
+              required
+            />
+            <div className="preview">
+              <p>No files currently selected for upload</p>
+            </div>
+            <small id="img" className="form-text text-muted">
+      You must upload a file with img format{' '}
+            </small>
+          </div>
+          <div className="form-group">
+            <label htmlFor="date">Date</label>
+            <input
+              value={this.state.date}
+              type="text"
+              className="form-control"
+              id="date"
+              placeholder="MM/DD/AAAA"
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="place">Place</label>
+            <input
+              value={this.state.place}
+              type="text"
+              className="form-control"
+              id="place"
+              placeholder="ML | LL | SD | Tx"
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="description">Description</label>
+            <input
+              value={this.state.description}
+              type="text"
+              className="form-control"
+              id="description"
+              placeholder="I found this at..."
+              onChange={this.handleChange}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="tags">Tags</label>
+            <input
+              value={this.state.tags}
+              type="text"
+              className="form-control"
+              id="tags"
+              aria-describedby="tags"
+              placeholder="Charger,Black,Small"
+              onChange={this.handleChange}
+              required
+            />
+            <small id="ingre" className="form-text text-muted">
       Tags must be entered with commas
-      </small>
-      </div>
-      <br />
-      <button type="submit" className="btn btn-primary">
+            </small>
+          </div>
+          <br />
+          <button type="submit" className="btn btn-primary">
       Add Object
-      </button>
-      </form>
+          </button>
+        </form>
       </div>
-      );
-    }
+    );
   }
-  export default FoundForm;
+}
+export default FoundForm;

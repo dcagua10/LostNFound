@@ -42,6 +42,20 @@ const findDocuments = function(db, callback) {
   });
 };
 
+const findUser = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('users');
+  // Find some documents
+  collection.findOne({} ,
+    {fields:{_id:0}}
+  ).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log('Found lost objects', docs.length);
+    console.log(docs);
+    callback(docs);
+  });
+};
+
 /* GET home page. */
 router.get('/getData', function(req, res) {
   res.setHeader('Content-Type', 'application/json');

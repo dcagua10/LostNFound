@@ -189,7 +189,10 @@ class Login extends Component {
             signInError: json.message,
             isLoading: false,
             signInPassword: '',
-            signInEmail: '',
+            signInEmail: signInEmail,
+            signUpstudentId: json.student_id,
+            signUpname: json.name, 
+            lastname: json.lastname,
             token: json.token,
           });
         } else {

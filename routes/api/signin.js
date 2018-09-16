@@ -137,11 +137,18 @@ router.post('/api/account/signin', (req, res, next) => {
           message: 'Error: server error'
         });
       }
-      return res.send({
-        success: true,
-        message: 'Valid sign in',
-        token: doc._id
-      });
+      User.findOne({email: email}, {_id:0,__v:0,isDeleted:0,password:0}, 
+        function(err,obj) { 
+          console.log(obj);
+          return res.send({
+            success: true,
+            message: 'Valid sign in',
+            token: doc._id,
+            name: obj.name,
+            lastname: obj.lastname,
+            student_id: obj.student_id
+          });
+        });
     });
   });
 });
@@ -173,6 +180,7 @@ router.get('/api/account/logout', (req, res, next) => {
     });
   });
 });
+
 
 router.get('/api/account/verify', (req, res, next) => {
   // Get the token
