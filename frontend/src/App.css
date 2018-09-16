@@ -1,0 +1,11 @@
+.divider{
+    width:10px;
+    height:auto;
+    display:inline-block;
+}
+.dividerRight
+{
+    width:65%;
+    height:auto;
+    display:inline-block;
+}
