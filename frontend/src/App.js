@@ -20,7 +20,7 @@ class App extends Component {
       <nav className="navbar navbar static-top navbar-expand-lg navbar-dark bg-dark">
         <div className="navbar-expand" id="navbar">
           <div className="navbar-nav">
-            <a className="navbar-brand" href="#">Welcome to LostNFound</a>
+            <a className="navbar-brand">Welcome to LostNFound</a>
           </div>
         </div>
         <div className="dividerRight"/>
@@ -31,27 +31,10 @@ class App extends Component {
     );
   }
   
-  renderContent()
-  {
-    <div className="content">
-      {this.props.children}
-    </div>;
-  }
-  
-  renderLowObjects()
-  {
-    <footer className="page-footer font-small blue">
-      <div className="footer-copyright text-center py-3">© 2018 Copyright: Orlando Sabogal and Daniel Cagua
-      </div>
-    </footer>;
-  }
-  
   render() {
     return (
       <div className="App">
         {this.renderTopObjects()}
-        {this.renderContent()}
-        {this.renderLowObjects()}
       </div>
     );
   }

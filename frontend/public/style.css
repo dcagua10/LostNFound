@@ -10,12 +10,21 @@
 {
     background-color: lightblue;
     border-radius: 15px;
-    margin: 0 auto;   
-    width: 400px;
+    margin: 0 auto;
+    margin-top: 5%;   
+    width: 500px;
     text-align: center;
     text-transform: capitalize;
     font-family: "Times New Roman", Times, serif;
     font-size: 20px;
     font-weight: bold;
+
 }
 
+.container
+{
+    background-color: black;
+    text-align: center;
+    color: white;
+    width: 100%;
+}

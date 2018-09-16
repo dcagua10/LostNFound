@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import './LFObjects.css';
 
-class LostObjects extends Component {
+class FoundObjects extends Component {
     
   constructor(props){
     super(props);
         
     this.state = {
       foundObjects : [
-        {object_id:1 ,object_name:'Celular',image:'',foundby_first_name:'Sapo',foundby_last_name:'Perez',foundby_login:'Sapo.Perez',date:'09/29/2018',place:'B', description:'No sirve', receivedby:'no'}
+        {object_id:1 ,object_name:'Celular',image:'',foundby_first_name:'Sapo',foundby_last_name:'Perez',foundby_login:'Sapo.Perez',date:'09/29/2018',place:'B', description:'No sirve', receivedby:'no'},
+        {object_id:2 ,object_name:'Celular',image:'',foundby_first_name:'Sapo',foundby_last_name:'Perez',foundby_login:'Sapo.Perez',date:'09/29/2018',place:'B', description:'No sirve', receivedby:'no'},
+        {object_id:3 ,object_name:'Celular',image:'',foundby_first_name:'Sapo',foundby_last_name:'Perez',foundby_login:'Sapo.Perez',date:'09/29/2018',place:'B', description:'No sirve', receivedby:'no'}
       ]
     };
   }
@@ -34,13 +36,14 @@ class LostObjects extends Component {
           <p>Found date: {obj.date}</p>
           <p>Place: {obj.place}</p>
           <p>Description: {obj.description}</p>
-          <button type="button">Its mine!</button>
+          <button class="btn btn-success" type="button">Its mine!</button>
         </div>
       </div>
     );
   }
     
-  render() {
+  render() 
+  {
     return (
       <div className="foundObjects">
         <h1>Found Objects List</h1>
@@ -48,12 +51,13 @@ class LostObjects extends Component {
           <div className="grid-container">
             <div className="grid-item">
               {this.renderObjects()}
-            </div></div>
+            </div>
+          </div>
         }
       </div>
     );
   }
 }
     
-export default LostObjects;
+export default FoundObjects;
     

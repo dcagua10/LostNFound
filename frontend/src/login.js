@@ -266,6 +266,7 @@ class Login extends Component {
             <input
               type="email"
               placeholder="Email"
+              className="form-group"
               value={signInEmail}
               onChange={this.onTextboxChangeSignInEmail}
             />
@@ -274,10 +275,11 @@ class Login extends Component {
               type="password"
               placeholder="Password"
               value={signInPassword}
+              className="form-group"
               onChange={this.onTextboxChangeSignInPassword}
             />
             <br />
-            <button onClick={this.onSignIn}>Sign In</button>
+            <button class="btn btn-default" onClick={this.onSignIn}>Sign In</button>
           </div>
           <br />
           <br />
@@ -292,39 +294,45 @@ class Login extends Component {
               type="number"
               placeholder="Codigo Uniandes"
               value={signUpstudentId}
+              className="form-group"
               onChange={this.onTextboxChangeSignUpStudentId}
             /><br />
             <input
               type="text"
               placeholder="Nombre"
               value={signUpname}
+              className="form-group"
               onChange={this.onTextboxChangeSignUpName}
             /><br />
             <input
               type="text"
               placeholder="Apellido"
               value={signUplastname}
+              className="form-group"
               onChange={this.onTextboxChangeSignUpLastName}
             /><br />
             <input
               type="text"
               placeholder="Login"
               value={signUplogin}
+              className="form-group"
               onChange={this.onTextboxChangeSignUpLogin}
             /><br />
             <input
               type="email"
               placeholder="Email"
               value={signUpEmail}
+              className="form-group"
               onChange={this.onTextboxChangeSignUpEmail}
             /><br />
             <input
               type="password"
               placeholder="Password"
               value={signUpPassword}
+              className="form-group"
               onChange={this.onTextboxChangeSignUpPassword}
             /><br />
-            <button onClick={this.onSignUp}>Sign Up</button>
+            <button class="btn btn-default" onClick={this.onSignUp}>Sign Up</button>
             
           </div>
 
@@ -335,7 +343,7 @@ class Login extends Component {
     return (
       <div>
         <p>Account</p>
-        <button onClick={this.logout}>Logout</button>
+        <button class="btn btn-default" onClick={this.logout}>Logout</button>
       </div>
     );
   }
