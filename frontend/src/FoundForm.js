@@ -42,7 +42,7 @@ class FoundForm extends React.Component {
         "content-type": "application/json"
       }
     }).then(function(res) {
-      if (res.status == 200) alert("The object found was added");
+      if (res.status === 200) alert("The object found was added");
       else alert("There is an error, try again");
       console.log(res);
     });
@@ -54,12 +54,12 @@ class FoundForm extends React.Component {
     this.post();
     event.preventDefault();
     this.setState({
-      object_id:"",
+      object_id: Math.random(),
       object_name: "",
       image: "",
-      foundby_first_name:"",
-      foundby_last_name: "",
-      foundby_login: "",
+      foundby_first_name:"Nombre",
+      foundby_last_name: "Apellido",
+      foundby_login: "Nombre.Apellido10",
       date:"",
       place: "",
       description: "",
@@ -109,7 +109,7 @@ class FoundForm extends React.Component {
       className="form-control"
       aria-describedby="objimg"
       id="image_uploads" 
-      name="img_uploads"
+      name="image_uploads"
       accept="image/*"
       onChange={this.handleChange}
       required
