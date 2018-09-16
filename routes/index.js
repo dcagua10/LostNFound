@@ -5,7 +5,7 @@ var router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
-function getObject(callback){
+function getDataLost(callback){
   // Connection URL
   const url = 'mongodb://localhost:27017';
   
@@ -19,7 +19,7 @@ function getObject(callback){
     
     const db = client.db(dbName);
     
-    findDocuments(db, (data) => {
+    findLost(db, (data) => {
       callback(data);
       client.close();
     });
@@ -28,7 +28,30 @@ function getObject(callback){
   });
 }
 
-const findDocuments = function(db, callback) {
+function getDataFound(callback){
+  // Connection URL
+  const url = 'mongodb://localhost:27017';
+  
+  // Database Name
+  const dbName = 'lostNFound';
+  
+  // Use connect method to connect to the server
+  MongoClient.connect(url, function(err, client) {
+    assert.equal(null, err);
+    console.log('Connected successfully to server');
+    
+    const db = client.db(dbName);
+    
+    findFound(db, (data) => {
+      callback(data);
+      client.close();
+    });
+    
+    client.close();
+  });
+}
+
+const findLost = function(db, callback) {
   // Get the documents collection
   const collection = db.collection('lost');
   // Find some documents
@@ -37,6 +60,20 @@ const findDocuments = function(db, callback) {
   ).toArray(function(err, docs) {
     assert.equal(err, null);
     console.log('Found lost objects', docs.length);
+    //console.log(docs);
+    callback(docs);
+  });
+};
+
+const findFound = function(db, callback) {
+  // Get the documents collection
+  const collection = db.collection('found');
+  // Find some documents
+  collection.find({} ,
+    {fields:{_id:0}}
+  ).toArray(function(err, docs) {
+    assert.equal(err, null);
+    console.log('Found founded objects', docs.length);
     //console.log(docs);
     callback(docs);
   });
@@ -57,9 +94,16 @@ const findUser = function(db, callback) {
 };
 
 /* GET home page. */
-router.get('/getData', function(req, res) {
+router.get('/getData/lost', function(req, res) {
   res.setHeader('Content-Type', 'application/json');
-  getObject((data) =>
+  getDataLost((data) =>
+    res.send(data)
+  );
+});
+
+router.get('/getData/found', function(req, res) {
+  res.setHeader('Content-Type', 'application/json');
+  getDataFound((data) =>
     res.send(data)
   );
 });
