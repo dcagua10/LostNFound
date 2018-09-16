@@ -8,6 +8,8 @@ class LostObjects extends Component {
         
     this.state = {
       foundObjects : [
+        {object_id:1 ,object_name:'Celular',image:'',foundby_first_name:'Sapo',foundby_last_name:'Perez',foundby_login:'Sapo.Perez',date:'09/29/2018',place:'B', description:'No sirve', receivedby:'no'},
+        {object_id:1 ,object_name:'Celular',image:'',foundby_first_name:'Sapo',foundby_last_name:'Perez',foundby_login:'Sapo.Perez',date:'09/29/2018',place:'B', description:'No sirve', receivedby:'no'},
         {object_id:1 ,object_name:'Celular',image:'',foundby_first_name:'Sapo',foundby_last_name:'Perez',foundby_login:'Sapo.Perez',date:'09/29/2018',place:'B', description:'No sirve', receivedby:'no'}
       ]
     };
@@ -48,7 +50,8 @@ class LostObjects extends Component {
           <div className="grid-container">
             <div className="grid-item">
               {this.renderObjects()}
-            </div></div>
+            </div>
+          </div>
         }
       </div>
     );

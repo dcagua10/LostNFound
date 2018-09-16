@@ -31,27 +31,10 @@ class App extends Component {
     );
   }
   
-  renderContent()
-  {
-    <div className="content">
-      {this.props.children}
-    </div>;
-  }
-  
-  renderLowObjects()
-  {
-    <footer className="page-footer font-small blue">
-      <div className="footer-copyright text-center py-3">© 2018 Copyright: Orlando Sabogal and Daniel Cagua
-      </div>
-    </footer>;
-  }
-  
   render() {
     return (
       <div className="App">
         {this.renderTopObjects()}
-        {this.renderContent()}
-        {this.renderLowObjects()}
       </div>
     );
   }
