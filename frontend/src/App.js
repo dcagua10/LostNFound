@@ -17,7 +17,7 @@ class App extends Component {
     return ( 
       // <Objeto objeto={obj}/>
       //<div key={obj.id}>{obj.foundby_first_name} - {obj.description} in {obj.place}</div>
-      <nav class="navbar navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+      <nav class="navbar navbar static-top navbar-expand-lg navbar-dark bg-dark">
       <div class="navbar-expand" id="navbar">
       <div class="navbar-nav">
       <a class="navbar-brand" href="#">Welcome to LostNFound</a>
