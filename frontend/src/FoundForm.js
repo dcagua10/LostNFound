@@ -22,12 +22,15 @@ class FoundForm extends React.Component {
   
   handleChange(event) {
     console.log(event.target.id);
-    let object_name = event.target.value;
+/*     let object_name = event.target.value;
     let image = event.target.input;
     let value = event.target.value;
     let date = event.target.value;
     let place = event.target.value;
-    let description = event.target.value;
+    let description = event.target.value; */
+    let name = event.target.id;
+    let value = event.target.value;
+    this.setState({ [name]: value });
     
   }
   
