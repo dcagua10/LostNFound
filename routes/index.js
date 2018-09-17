@@ -55,7 +55,8 @@ function getDataFound(callback){
 
 const findLost = function(db, callback) {
   // Get the documents collection
-  const collection = db.collection('lost');
+  console.log(db);
+  const collection = db.collection('lost2');
   // Find some documents
   collection.find({} ,
     {fields:{_id:0}}

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const connection = mongoose.createConnection(process.env.MONGODB_URI, function (err) {
   if (err) throw err;
-  console.log('Successfully connected');
+  console.log('Successfully connected to', process.env.MONGODB_URI);
 });
 
 
