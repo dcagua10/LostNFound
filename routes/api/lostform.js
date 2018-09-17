@@ -9,7 +9,7 @@ router.post('/api/lost', function(req, res) {
     //id,
     lostby_first_name,
     lostby_last_name,
-    lostby_login,
+    lostByLogin,
     obj,
     place,
     description,
@@ -22,7 +22,7 @@ router.post('/api/lost', function(req, res) {
   //newLost.object_id = id;
   newLost.lostby_first_name = lostby_first_name;
   newLost.lostby_last_name = lostby_last_name;
-  newLost.lostby_login = lostby_login;
+  newLost.lostby_login = lostByLogin;
   newLost.object_name = obj;
   newLost.place = place;
   newLost.description = description;

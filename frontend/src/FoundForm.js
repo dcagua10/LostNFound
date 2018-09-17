@@ -1,70 +1,97 @@
 import React from 'react';
+import {
+  getFromStorage
+} from './storage';
 
 class FoundForm extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      object_id:'',
-      object_name: '',
-      image: '',
-      foundby_first_name:'',
-      foundby_last_name: '',
-      foundby_login: '',
-      date:'',
-      place: '',
-      description: '',
-      tags: []
-    };
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  
-  handleChange(event) {
-    console.log(event.target.id);
-    /*     let object_name = event.target.value;
-    let image = event.target.input;
-    let value = event.target.value;
-    let date = event.target.value;
-    let place = event.target.value;
-    let description = event.target.value; */
-    let name = event.target.id;
-    let value = event.target.value;
-    this.setState({ [name]: value });
+  constructor(props){
+    super(props);
     
+    this.state = {
+      objfoundby_last_name: '',
+      objfoundby_first_name: '',
+      objfoundby_login: '',
+      objobject_name: '',
+      objplace: '',
+      objdescription: '',
+      objrecovered: 'NO',
+      objdate: '',
+      objimage: '',
+      objtags: []
+    };
+    this.change = this.change.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.APICall = this.APICall.bind(this);
   }
   
-  post() {
-    fetch('/api/postFoundObject', {
-      body: JSON.stringify(this.state),
+  change (event) {
+    const target = event.target;
+    const value = target.value;
+    this.setState({
+      [event.target.name]: value
+    });
+  }
+  
+  APICall() {
+    const {
+      objfoundby_last_name,
+      objfoundby_first_name,
+      objfoundby_login,
+      objobject_name,
+      objplace,
+      objdescription,
+      objrecovered,
+      objdate,
+      objimage,
+      objtags
+    } = this.state;
+    fetch('api/found', {
       method: 'POST',
       headers: {
-        'content-type': 'application/json'
-      }
-    }).then(function(res) {
-      if (res.status === 200) alert('The object found was added');
-      else alert('There is an error, try again');
-      console.log(res);
-    });
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        foundby_last_name: objfoundby_last_name ,
+        foundby_first_name: objfoundby_first_name ,
+        foundby_login: objfoundby_login ,
+        object_name: objobject_name ,
+        place: objplace ,
+        description: objdescription ,
+        recovered: objrecovered ,
+        date: objdate ,
+        image: objimage ,
+        tags: objtags
+      }),
+    }).then(res => res.json())
+      .then(json => {
+        console.log('json',json);
+        if (json.success) {
+          console.log(json.message);
+        }
+        else{
+          console.log('error al subir objeto.');
+        }
+      });
   }
   
-  handleSubmit(event) {
-    console.log(this.state);
-    alert('Loading your post, please wait');
-    this.post();
-    event.preventDefault();
-    this.setState({
-      object_id: Math.random(),
-      object_name: '',
-      image: '',
-      foundby_first_name:'Nombre',
-      foundby_last_name: 'Apellido',
-      foundby_login: 'Nombre.Apellido10',
-      date:'',
-      place: '',
-      description: '',
-      tags: []
-    });
+  onSubmit(e) {
+    e.preventDefault();
+    //console.log(this.state);
+    // Grab state
+    const storage = getFromStorage('LostNFound');
+    if (storage && storage.token) {
+      const { token,name,lastname,login } = storage;
+      this.setState({
+        token,
+        objfoundby_last_name: name,
+        objfoundby_first_name: lastname,
+        objfoundby_login: login,
+        isLoading: false
+      }, () => this.APICall());
+    }
+    else{
+      alert('Debes iniciar sesion.');
+    }
   }
   
   render() {
@@ -76,12 +103,12 @@ class FoundForm extends React.Component {
           <div className="form-group">
             <label htmlFor="object_name">Object name</label>
             <input
-              value={this.state.object_name}
               type="text"
+              value={this.state.objName}
+              onChange={this.change}
               className="form-control"
-              id="object_name"
+              name="objobject_name"
               placeholder="Charger"
-              onChange={this.handleChange}
               required
             />
           </div>
@@ -91,45 +118,45 @@ class FoundForm extends React.Component {
               value={this.state.image}
               type="text"
               className="form-control"
-              id="image"
+              name="objimage"
               aria-describedby="img"
               placeholder="https://image.ibb.co/jL9oge/Unbenched_Emote.png"
-              onChange={this.handleChange}
+              onChange={this.change}
               required
             />
             <small id="img" className="form-text text-muted">
       you must upload the url link with the extension of your image{' '}
             </small>
           </div>
-          <div className="form-group">
-            <label htmlFor="image_uploads">Image File</label>
-            <input 
-              value={this.state.input}
-              type="file"
-              className="form-control"
-              aria-describedby="objimg"
-              id="image_uploads" 
-              name="image_uploads"
-              accept="image/*"
-              onChange={this.handleChange}
-              required
-            />
-            <div className="preview">
-              <p>No files currently selected for upload</p>
-            </div>
-            <small id="img" className="form-text text-muted">
+          {/* <div className="form-group">
+      <label htmlFor="image_uploads">Image File</label>
+      <input 
+      value={this.state.input}
+      type="file"
+      className="form-control"
+      aria-describedby="objimg"
+      id="image_uploads" 
+      name="image_uploads"
+      accept="image/*"
+      onChange={this.change}
+      required
+      />
+      <div className="preview">
+      <p>No files currently selected for upload</p>
+      </div>
+      <small id="img" className="form-text text-muted">
       You must upload a file with img format{' '}
-            </small>
-          </div>
+      </small>
+    </div> */}
           <div className="form-group">
             <label htmlFor="date">Date</label>
             <input
               value={this.state.date}
-              type="text"
+              type="date"
               className="form-control"
-              id="date"
+              name="objdate"
               placeholder="MM/DD/AAAA"
-              onChange={this.handleChange}
+              onChange={this.change}
               required
             />
           </div>
@@ -139,9 +166,9 @@ class FoundForm extends React.Component {
               value={this.state.place}
               type="text"
               className="form-control"
-              id="place"
+              name="objplace"
               placeholder="ML | LL | SD | Tx"
-              onChange={this.handleChange}
+              onChange={this.change}
               required
             />
           </div>
@@ -151,9 +178,9 @@ class FoundForm extends React.Component {
               value={this.state.description}
               type="text"
               className="form-control"
-              id="description"
+              name="objdescription"
               placeholder="I found this at..."
-              onChange={this.handleChange}
+              onChange={this.change}
               required
             />
           </div>
@@ -163,19 +190,19 @@ class FoundForm extends React.Component {
               value={this.state.tags}
               type="text"
               className="form-control"
-              id="tags"
+              name="objtags"
               aria-describedby="tags"
               placeholder="Charger,Black,Small"
-              onChange={this.handleChange}
+              onChange={this.change}
               required
             />
             <small id="ingre" className="form-text text-muted">
-      Tags must be entered with commas
+    Tags must be entered with commas
             </small>
           </div>
           <br />
-          <button type="submit" className="btn btn-primary">
-      Add Object
+          <button type="submit" onClick={e=>this.onSubmit(e)} className="btn btn-primary">
+    Add Object
           </button>
         </form>
       </div>
