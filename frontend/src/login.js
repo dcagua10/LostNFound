@@ -4,6 +4,7 @@ import 'whatwg-fetch';
 import {
   setInStorage,
   getFromStorage,
+  deleteInStorage
 } from './storage';
 
 class Login extends Component {
@@ -225,6 +226,7 @@ class Login extends Component {
               token: '',
               isLoading: false
             });
+            deleteInStorage('LostNFound');
           } else {
             this.setState({
               isLoading: false,

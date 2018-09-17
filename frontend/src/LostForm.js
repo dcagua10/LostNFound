@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {
-  setInStorage,
-  getFromStorage,
+  getFromStorage
 } from './storage';
 
 class LostForm extends Component {
@@ -10,7 +9,7 @@ class LostForm extends Component {
     super(props);
     
     this.state = {
-      objId: '',
+      //objId: '',
       objlostbyName: '',
       objlostbyLastname: '',
       objlostbyLogin: '',
@@ -19,10 +18,11 @@ class LostForm extends Component {
       objDescription: '',
       objDate: '',
       objImg: '',
-      objTags: ''
+      objTags: []
     };
     this.change = this.change.bind(this);
-    //this.onSubmit = this.onSubmit.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+    this.APICall = this.APICall.bind(this);
   }
   
   change (event) {
@@ -32,13 +32,10 @@ class LostForm extends Component {
       [event.target.name]: value
     });
   }
-  
-  onSubmit(e) {
-    e.preventDefault();
-    console.log(this.state);
-    // Grab state
+
+  APICall() {
     const {
-      objId,
+      //objId,
       objlostbyName,
       objlostbyLastname,
       objlostbyLogin,
@@ -49,6 +46,39 @@ class LostForm extends Component {
       objImg,
       objTags
     } = this.state;
+    fetch('api/lost', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        //id: objId,
+        lostby_first_name: objlostbyName,
+        lostby_last_name: objlostbyLastname,
+        lostByLogin: objlostbyLogin,
+        obj: objName,
+        place: objPlace,
+        description: objDescription,
+        date: objDate,
+        img: objImg,
+        tags: objTags
+      }),
+    }).then(res => res.json())
+      .then(json => {
+        console.log('json',json);
+        if (json.success) {
+          console.log(json.message);
+        }
+        else{
+          console.log('error al subir objeto.');
+        }
+      });
+  }
+  
+  onSubmit(e) {
+    e.preventDefault();
+    //console.log(this.state);
+    // Grab state
     const storage = getFromStorage('LostNFound');
     if (storage && storage.token) {
       const { token,name,lastname,login } = storage;
@@ -58,35 +88,10 @@ class LostForm extends Component {
         objlostbyLastname: lastname,
         objlostbyLogin: login,
         isLoading: false
-      });
-      console.log('storage is',storage.name);
-      fetch('api/lost', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          id: objId,
-          lostbyName: objlostbyName,
-          lostbyLastname: objlostbyLastname,
-          lostByLogin: objlostbyLogin,
-          obj: objName,
-          place: objPlace,
-          description: objDescription,
-          date: objDate,
-          img: objImg,
-          tags: objTags
-        }),
-      }).then(res => res.json())
-        .then(json => {
-          console.log('json',json);
-          if (json.success) {
-            console.log(json.message);
-          }
-          else{
-            console.log('error al subir objeto.');
-          }
-        });
+      }, () => this.APICall());
+    }
+    else{
+      alert('Debes iniciar sesion.');
     }
   }
   
