@@ -7,6 +7,9 @@ import {Collapse,
   Nav,
   NavItem,
   Button} from 'reactstrap';
+import {
+  getFromStorage
+} from './storage';
   
 export default class App extends Component {
     
@@ -27,6 +30,25 @@ export default class App extends Component {
   }
     
   render() {
+    let button1;
+    let button2;
+      
+    const storage = getFromStorage('LostNFound');
+    if (storage && storage.token) {
+      const { name,lastname } = storage;
+      button1 = <NavItem>
+        <Button outline  color="info" onClick={()=>{window.location = '/signUp';}} className="mx-1">{name} - {lastname}</Button>
+      </NavItem>;
+    }
+    else{
+      button1 = <NavItem>
+        <Button color="primary" onClick={()=>{window.location = '/signUp';}} className="mx-1">Sign Up</Button>
+        </NavItem>;
+      button2 = <NavItem>
+      <Button color="success" onClick={()=>{window.location = '/signin';}} className="mx-1">Sign In</Button>
+      </NavItem>;
+    }
+      
     return (
       <div>
         <Navbar color="dark" light expand="md">
@@ -46,12 +68,8 @@ export default class App extends Component {
               <NavItem>
                 <Button outline  color="secondary" onClick={()=>{window.location = '/found';}} className="mx-1">Found</Button>
               </NavItem>
-              <NavItem>
-                <Button color="success" onClick={()=>{window.location = '/signIn';}} className="mx-1">Sign In</Button>
-              </NavItem>
-              <NavItem>
-                <Button color="primary" onClick={()=>{window.location = '/signUp';}} className="mx-1">Sign Up</Button>
-              </NavItem>
+              {button1}
+              {button2}        
             </Nav>
           </Collapse>
         </Navbar>
