@@ -22,7 +22,7 @@ class LandingPage extends Component {
               </h1>
             </div>
             <div class="col-lg-8 mx-auto">
-              <p class="text-faded mb-5">In this website you can search for your personal objects if you lost them or help other finding theirs</p>
+              <p class="text-faded mb-5">In this website you can search for your personal objects if you lost them or help others finding theirs</p>
               <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Start Searching</a>
             </div>
           </div>
