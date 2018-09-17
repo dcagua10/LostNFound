@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
-
-const connection = mongoose.createConnection('mongodb://localhost:27017/lostNFound', function (err) {
+require('dotenv').config();
+const connection = mongoose.createConnection(process.env.MONGODB_URI, function (err) {
   if (err) throw err;
   console.log('Successfully connected');
 });

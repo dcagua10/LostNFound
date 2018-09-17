@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var siginrouter = require('./routes/api/signin');
@@ -23,9 +24,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Serve static files from the React frontend app
 app.use(express.static(path.join(__dirname, 'frontend/build')));
 // Anything that doesn't match the above, send back index.html
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname + '/frontend/build/index.html'))
-});
+if(process.env.ENV!="dev")
+{
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '/frontend/build/index.html'));
+  });
+}
+
 
 app.use('/', indexRouter);
 app.use('/',siginrouter);

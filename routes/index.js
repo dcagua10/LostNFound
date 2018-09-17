@@ -1,16 +1,17 @@
 var express = require('express');
 var router = express.Router();
-
+require('dotenv').config();
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
 
 function getDataLost(callback){
   // Connection URL
-  const url = 'mongodb://localhost:27017';
-  
+  //const url = 'mongodb://localhost:27017';
+  const url = process.env.MONGODB_URI;
+
   // Database Name
-  const dbName = 'lostNFound';
+  const dbName = process.env.DB_NAME;
   
   // Use connect method to connect to the server
   MongoClient.connect(url, function(err, client) {
@@ -30,11 +31,12 @@ function getDataLost(callback){
 
 function getDataFound(callback){
   // Connection URL
-  const url = 'mongodb://localhost:27017';
+  //const url = 'mongodb://localhost:27017';
+  const url = process.env.MONGODB_URI;
   
   // Database Name
-  const dbName = 'lostNFound';
-  
+  const dbName = process.env.DB_NAME;
+  console.log(dbName);
   // Use connect method to connect to the server
   MongoClient.connect(url, function(err, client) {
     assert.equal(null, err);
