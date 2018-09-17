@@ -11,6 +11,9 @@ import {
   getFromStorage
 } from './storage';
   
+
+/*hubiera sido util tener comentarios en algunas clases para que la lectura del codigo fuera mas entendible */
+
 export default class App extends Component {
     
   constructor(props){
