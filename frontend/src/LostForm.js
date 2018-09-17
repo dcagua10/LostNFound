@@ -28,7 +28,8 @@ class LostForm extends Component {
     });
   }
   
-  onSubmit() {
+  onSubmit(e) {
+    e.preventDefault();
     console.log(this.state);
     // Grab state
     const {
@@ -61,6 +62,7 @@ class LostForm extends Component {
       }),
     }).then(res => res.json())
       .then(json => {
+        console.log('json',json);
         if (json.success) {
           console.log(json.message);
         }
