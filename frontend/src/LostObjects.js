@@ -2,58 +2,60 @@ import React, { Component } from 'react';
 import './LFObjects.css';
 
 class LostObjects extends Component {
-    
+  
   constructor(props){
     super(props);
-        
+    
     this.state = {
       lostObjects : [
-        {object_id:1 ,object_name:'Celular',image:'',lostby_first_name:'Sapo',lostby_last_name:'Perez',date:'09/29/2018',place:'B', description:'No sirve'}
+        {object_id:1 ,object_name:'Celular',image:'',lostby_first_name:'Sapo',lostby_last_name:'Perez',date:'09/29/2018',place:'B', description:'No sirve'},
+        {object_id:2 ,object_name:'Celular',image:'',lostby_first_name:'Sapo',lostby_last_name:'Perez',date:'09/29/2018',place:'B', description:'No sirve'},
+        {object_id:3 ,object_name:'Celular',image:'',lostby_first_name:'Sapo',lostby_last_name:'Perez',date:'09/29/2018',place:'B', description:'No sirve'}
       ]
     };
   }
-    
+  
   componentDidMount(){
     fetch('/getData/lost')
-      .then((res) => {
-        return res.json();
-      })
-      .then((json) => this.setState({lostObjects:json}))
-      .catch((err) => console.log(err));
+    .then((res) => {
+      return res.json();
+    })
+    .then((json) => this.setState({lostObjects:json}))
+    .catch((err) => console.log(err));
   }
-    
+  
   renderObjects() {
     return this.state.lostObjects.map((obj) => 
-      // <Objeto objeto={obj}/>
-      <div className="card" key={obj.object_id}>
-        <img src="images/object_default.jpg" alt="Avatar"/>
-        <div className="container">
-          <h4><b>{obj.lostby_first_name} {obj.lostby_last_name}</b></h4>
-          <p>Object ID: {obj.object_id}</p>
-          <p>Objeto: {obj.object_name}</p> 
-          <p>Lost date: {obj.date}</p>
-          <p>Place: {obj.place}</p>
-          <p>Description: {obj.description}</p>
-          <button type="button">Its mine!</button>
-        </div>
-      </div>
+    // <Objeto objeto={obj}/>
+    <div className="card" key={obj.object_id}>
+    <img src="images/object_default.jpg" alt="Avatar"/>
+    <div className="container">
+    <h4><b>{obj.lostby_first_name} {obj.lostby_last_name}</b></h4>
+    <p>Object ID: {obj.object_id}</p>
+    <p>Objeto: {obj.object_name}</p> 
+    <p>Lost date: {obj.date}</p>
+    <p>Place: {obj.place}</p>
+    <p>Description: {obj.description}</p>
+    <button class="btn btn-success" type="button">Its mine!</button>
+    </div>
+    </div>
     );
   }
-    
-  render() {
+  
+  render()
+  {
     return (
       <div className="lostObjects">
-        <h1>Lost Objects List</h1>
-        {
-          <div className="grid-container">
-            <div className="grid-item">
-              {this.renderObjects()}
-            </div></div>
-        }
+      <h1>Lost Objects List</h1>
+      {
+        <div className="grid-container">
+        {this.renderObjects()}
+        </div>
+      }
       </div>
-    );
+      );
+    }
   }
-}
-    
-export default LostObjects;
-    
+  
+  export default LostObjects;
+  
