@@ -1,49 +1,67 @@
 import React, { Component } from 'react';
 import './App.css';
-
-class App extends Component {
+import {Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  Button} from 'reactstrap';
   
+export default class App extends Component {
+    
   constructor(props){
     super(props);
-    
+      
     this.state = {
-      objetos : [
-        {id:1 ,foundby_first_name:'Sapo', description:'No sirve', place:'SD'}
-      ]
+      collapsed: false
     };
+      
+    this.toggleNavbar = this.toggleNavbar.bind(this);
   }
-  
-  renderTopObjects() {
-    return ( 
-      // <Objeto objeto={obj}/>
-      //<div key={obj.id}>{obj.foundby_first_name} - {obj.description} in {obj.place}</div>
-      <nav className="navbar navbar static-top navbar-expand-lg ">
-        <div className="navbar-expand" id="navbar">
-          <div className="navbar-nav">
-            <a className="navbar-brand" href='/LandingPage' >Welcome to LostNFound</a>
-          </div>
-        </div>
-        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/LostObjects');}}>Lost Objects</button>
-        <div className="divider"/>
-        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/AddLostObjects');}}>Add Lost Object</button>
-        <div className="divider"/>
-        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/FoundObjects');}}>Found Objects</button>
-        <div className="divider"/>
-        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/AddFoundObjects');}}>Add Found Object</button>
-        <div className="dividerRight"/>
-        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/Login');}}>Login</button>
-      </nav>
-    );
+    
+  toggleNavbar() {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
   }
-  
+    
   render() {
     return (
-      <div className="App">
-        {this.renderTopObjects()}
+      <div>
+        <Navbar color="dark" light expand="md">
+          <NavbarBrand href="/">LostNFound</NavbarBrand>
+          <NavbarToggler onClick={this.toggleNavbar} />
+          <Collapse isOpen={this.state.collapsed} navbar>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <Button outline  color="info" onClick={()=>{window.location = '/lostForm';}} className="mx-1">New Lost</Button>
+              </NavItem>
+              <NavItem>
+                <Button outline  color="info" onClick={()=>{window.location = '/foundForm';}} className="mx-1">New Found</Button>
+              </NavItem>
+              <NavItem>
+                <Button outline  color="secondary" onClick={()=>{window.location = '/lost';}} className="mx-1">Lost</Button>
+              </NavItem>
+              <NavItem>
+                <Button outline  color="secondary" onClick={()=>{window.location = '/found';}} className="mx-1">Found</Button>
+              </NavItem>
+              <NavItem>
+                <Button color="success" onClick={()=>{window.location = '/signIn';}} className="mx-1">Sign In</Button>
+              </NavItem>
+              <NavItem>
+                <Button color="primary" onClick={()=>{window.location = '/signUp';}} className="mx-1">Sign Up</Button>
+              </NavItem>
+            </Nav>
+          </Collapse>
+        </Navbar>
+        <div className="content">
+          {this.props.children}
+        </div>
+        <footer className="bg-dark">
+          <div className="footer_makers">Orlando Sabogal and Daniel Cagua - 2018</div>
+        </footer>
       </div>
     );
   }
-}
-  
-export default App;
-  
+} 

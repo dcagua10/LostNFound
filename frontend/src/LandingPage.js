@@ -1,44 +1,32 @@
 import React, { Component } from 'react';
-
-class LandingPage extends Component {
+import {Jumbotron, Button, Container, Carousel,
+  CarouselItem,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselCaption } from 'reactstrap';
   
-  constructor(props){
-    super(props);
+export default class LandingPage extends Component {
     
-    this.state = {
-      objetos : []
-    };
+  constructor(props) {
+    super(props);
   }
-  
-  renderObjects() {
-    return ( 
-        <div>
-        <header class="masthead text-center text-white d-flex">
-        <div class="container my-auto">
-          <div class="row">
-            <div class="col-lg-10 mx-auto">
-              <h1 class="text-uppercase">
-                <strong>Welcome to LostNFound</strong>
-              </h1>
-            </div>
-            <div class="col-lg-8 mx-auto">
-              <p class="text-faded mb-5">In this website you can search for your personal objects if you lost them or help others finding theirs</p>
-              <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Start Searching</a>
-            </div>
-          </div>
-        </div>
-      </header></div>
-    );
-  }
-  
+    
+    
   render() {
+      
     return (
-      <div className="LandingPage">
-        {this.renderObjects()}
+      <div>
+        <Jumbotron>
+          <h1 className="display-3">Bienvenido a LostNFound!</h1>
+          <p className="lead">En este espacio podras publicar tus objetos perdidos y ver los que otras personas han encontrado.</p>
+          <hr className="my-2" />
+          <p>Para empezar a buscar registrate o inicia sesion.</p>
+          <p className="lead">
+            <Button color="success" onClick={()=>{window.location = '/signIn';}} className="mx-1">Sign In</Button>
+          </p>
+        </Jumbotron>        
       </div>
     );
   }
 }
-  
-export default LandingPage;
-  
+    

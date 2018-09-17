@@ -9,3 +9,26 @@
     height:auto;
     display:inline-block;
 }
+
+/* Footer */
+footer {
+	color: white;
+	padding: 25px;
+	text-align: center;
+}
+
+.footer_brand {
+	font-size: 20px;
+}
+
+.footer_makers .footer_license {
+	font-size: 12px;
+}
+
+.footer_makers {
+	margin-top: 25px;
+}
+
+.footer_logo {
+  width: 200px;
+}
