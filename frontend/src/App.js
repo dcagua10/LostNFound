@@ -17,16 +17,21 @@ class App extends Component {
     return ( 
       // <Objeto objeto={obj}/>
       //<div key={obj.id}>{obj.foundby_first_name} - {obj.description} in {obj.place}</div>
-      <nav className="navbar navbar static-top navbar-expand-lg navbar-dark bg-dark">
+      <nav className="navbar navbar static-top navbar-expand-lg ">
         <div className="navbar-expand" id="navbar">
           <div className="navbar-nav">
-            <a className="navbar-brand">Welcome to LostNFound</a>
+            <a className="navbar-brand" href='/LandingPage' >Welcome to LostNFound</a>
           </div>
         </div>
-        <div className="dividerRight"/>
-        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick="changeColor()">Sign In</button>
+        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/LostObjects');}}>Lost Objects</button>
         <div className="divider"/>
-        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick="changeColor()">Sign Up</button>
+        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/AddLostObjects');}}>Add Lost Object</button>
+        <div className="divider"/>
+        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/FoundObjects');}}>Found Objects</button>
+        <div className="divider"/>
+        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/AddFoundObjects');}}>Add Found Object</button>
+        <div className="dividerRight"/>
+        <button className="btn btn-outline-info my-2 my-sm-0 pull-right" onClick={()=>{ window.location.assign('/Login');}}>Login</button>
       </nav>
     );
   }
