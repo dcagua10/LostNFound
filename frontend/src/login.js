@@ -184,7 +184,12 @@ class Login extends Component {
       .then(json => {
         console.log('json', json);
         if (json.success) {
-          setInStorage('LostNFound', { token: json.token });
+          setInStorage('LostNFound', { 
+            token: json.token,
+            name: json.name,
+            lastname: json.lastname,
+            login: json.login
+          });
           this.setState({
             signInError: json.message,
             isLoading: false,
@@ -279,7 +284,7 @@ class Login extends Component {
               onChange={this.onTextboxChangeSignInPassword}
             />
             <br />
-            <button class="btn btn-default" onClick={this.onSignIn}>Sign In</button>
+            <button className="btn btn-default" onClick={this.onSignIn}>Sign In</button>
           </div>
           <br />
           <br />
@@ -332,7 +337,7 @@ class Login extends Component {
               className="form-group"
               onChange={this.onTextboxChangeSignUpPassword}
             /><br />
-            <button class="btn btn-default" onClick={this.onSignUp}>Sign Up</button>
+            <button className="btn btn-default" onClick={this.onSignUp}>Sign Up</button>
             
           </div>
 
@@ -343,7 +348,7 @@ class Login extends Component {
     return (
       <div>
         <p>Account</p>
-        <button class="btn btn-default" onClick={this.logout}>Logout</button>
+        <button className="btn btn-default" onClick={this.logout}>Logout</button>
       </div>
     );
   }

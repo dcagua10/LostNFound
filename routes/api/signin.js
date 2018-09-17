@@ -146,6 +146,7 @@ router.post('/api/account/signin', (req, res, next) => {
             token: doc._id,
             name: obj.name,
             lastname: obj.lastname,
+            login: obj.login,
             student_id: obj.student_id
           });
         });

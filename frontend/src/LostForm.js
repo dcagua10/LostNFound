@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import {
+  setInStorage,
+  getFromStorage,
+} from './storage';
 
 class LostForm extends Component {
   
@@ -7,8 +11,9 @@ class LostForm extends Component {
     
     this.state = {
       objId: '',
-      lostbyName: '',
-      lostbyLastname: '',
+      objlostbyName: '',
+      objlostbyLastname: '',
+      objlostbyLogin: '',
       objName: '',
       objPlace: '',
       objDescription: '',
@@ -34,8 +39,9 @@ class LostForm extends Component {
     // Grab state
     const {
       objId,
-      lostbyName,
-      lostbyLastname,
+      objlostbyName,
+      objlostbyLastname,
+      objlostbyLogin,
       objName,
       objPlace,
       objDescription,
@@ -43,33 +49,45 @@ class LostForm extends Component {
       objImg,
       objTags
     } = this.state;
-    
-    fetch('api/lost', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id: objId,
-        lostbyName: lostbyName,
-        lostbyLastname: lostbyLastname,
-        obj: objName,
-        place: objPlace,
-        description: objDescription,
-        date: objDate,
-        img: objImg,
-        tags: objTags
-      }),
-    }).then(res => res.json())
-      .then(json => {
-        console.log('json',json);
-        if (json.success) {
-          console.log(json.message);
-        }
-        else{
-          console.log('error al subir objeto.');
-        }
+    const storage = getFromStorage('LostNFound');
+    if (storage && storage.token) {
+      const { token,name,lastname,login } = storage;
+      this.setState({
+        token,
+        objlostbyName: name,
+        objlostbyLastname: lastname,
+        objlostbyLogin: login,
+        isLoading: false
       });
+      console.log('storage is',storage.name);
+      fetch('api/lost', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: objId,
+          lostbyName: objlostbyName,
+          lostbyLastname: objlostbyLastname,
+          lostByLogin: objlostbyLogin,
+          obj: objName,
+          place: objPlace,
+          description: objDescription,
+          date: objDate,
+          img: objImg,
+          tags: objTags
+        }),
+      }).then(res => res.json())
+        .then(json => {
+          console.log('json',json);
+          if (json.success) {
+            console.log(json.message);
+          }
+          else{
+            console.log('error al subir objeto.');
+          }
+        });
+    }
   }
   
   render() {
