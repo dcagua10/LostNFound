@@ -23,14 +23,23 @@ class FoundObjects extends Component {
       .then((json) => this.setState({foundObjects:json}))
       .catch((err) => console.log(err));
   }
+
+  renderImage(obj){
+    if(!obj.image){
+      return '/images/object_default.jpg';
+    }
+    else{
+      return obj.image;
+    }
+  }
   
   renderObjects() {
     return this.state.foundObjects.map((obj) => 
       <div className="card" key={obj.object_id}>
-        <img src="images/object_default.jpg" alt="Avatar"/>
+        <img src={this.renderImage(obj)} alt="Avatar"/>
         <div className="container">
           <h4><b>{obj.object_name}</b></h4>
-          <p>Object ID: {obj.object_id}</p>
+          {/* <p>Object ID: {obj.object_id}</p> */}
           <p>Received By: {obj.receivedby}</p>
           <p>Found date: {obj.date}</p>
           <p>Place: {obj.place}</p>

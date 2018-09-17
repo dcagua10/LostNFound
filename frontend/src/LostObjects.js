@@ -42,7 +42,7 @@ class LostObjects extends Component {
         <img src={this.renderImage(obj)} alt="Avatar"/>
         <div className="container">
           <h4><b>{obj.lostby_first_name} {obj.lostby_last_name}</b></h4>
-          <p>Object ID: {obj.object_id}</p>
+          {/* <p>Object ID: {obj.object_id}</p> */}
           <p>Objeto: {obj.object_name}</p> 
           <p>Lost date: {obj.date}</p>
           <p>Place: {obj.place}</p>
