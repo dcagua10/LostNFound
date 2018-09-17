@@ -10,6 +10,7 @@ import LostForm from './LostForm';
 import FoundObjects from './FoundObjects';
 import FoundForm from './FoundForm';
 import LandingPage from './LandingPage';
+import signUp from './signUp';
 
 /*ReactDOM.render(<App />, document.getElementById('root'));
 ReactDOM.render(<Login />, document.getElementById('login'));
@@ -24,11 +25,12 @@ ReactDOM.render(
     <App>
       <Switch>
         <Route exact path="/" component={LandingPage}/>
-        <Route exac path="/signup" component={Login}/>
+        <Route exac path="/signin" component={Login}/>
         <Route exac path="/lost" component={LostObjects}/>
         <Route exac path="/found" component={FoundObjects}/>
         <Route exac path="/lostForm" component={LostForm}/>
         <Route exac path="/foundForm" component={FoundForm}/>
+        <Route exac path="/signup" component={signUp}/>
       </Switch>
     </App>
   </Router>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   getFromStorage
 } from './storage';
+import {FormGroup,Form,Label,Input,Button,Container,} from 'reactstrap';
 
 class LostForm extends Component {
   
@@ -97,33 +98,35 @@ class LostForm extends Component {
   
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <label>Que perdiste?</label>
-          <input name ="objName" type="text" value={this.state.objName} onChange={this.change}/>
-        </div>
-        <div className="form-group">
-          <label>Donde lo perdiste?</label>
-          <input name ="objPlace" type="text" value={this.state.objPlace} onChange={this.change}/>
-        </div>
-        <div className="form-group">
-          <label>Descripción</label>
-          <input name ="objDescription" type="text" value={this.state.objDescription} onChange={this.change}/>
-        </div>
-        <div className="form-group">
-          <label>Cuando lo perdiste?</label>
-          <input name ="objDate" type="date" value={this.state.objDate} onChange={this.change}/>
-        </div>
-        <div className="form-group">
-          <label>Foto</label>
-          <input name ="objImg" type="text" value={this.state.objImg} onChange={this.change}/>
-        </div>
-        <div className="form-group">
-          <label>Tags</label>
-          <input name ="objTags" type="text" value={this.state.objTags} onChange={this.change}/>
-        </div>
-        <button  onClick={e=>this.onSubmit(e)}>Aceptar</button>
-      </form>
+      <Container>
+        <Form onSubmit={this.handleSubmit}>
+          <FormGroup>
+            <Label>Que perdiste?</Label>
+            <Input name ="objName" type="text" value={this.state.objName} onChange={this.change}/>
+          </FormGroup>
+          <FormGroup>
+            <Label>Donde lo perdiste?</Label>
+            <Input name ="objPlace" type="text" value={this.state.objPlace} onChange={this.change}/>
+          </FormGroup>
+          <FormGroup>
+            <Label>Descripción</Label>
+            <Input name ="objDescription" type="text" value={this.state.objDescription} onChange={this.change}/>
+          </FormGroup>
+          <FormGroup>
+            <Label>Cuando lo perdiste?</Label>
+            <Input name ="objDate" type="date" value={this.state.objDate} onChange={this.change}/>
+          </FormGroup>
+          <FormGroup>
+            <Label>Foto</Label>
+            <Input name ="objImg" type="text" value={this.state.objImg} onChange={this.change}/>
+          </FormGroup>
+          <FormGroup>
+            <Label>Tags</Label>
+            <Input name ="objTags" type="text" value={this.state.objTags} onChange={this.change}/>
+          </FormGroup>
+          <Button color="primary" onClick={e=>this.onSubmit(e)}>Aceptar</Button>
+        </Form>
+      </Container>
     );
   }
 }

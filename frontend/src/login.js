@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
-
+import {FormGroup,Form,Label,Input,Button,Container} from 'reactstrap';
 import {
   setInStorage,
   getFromStorage,
@@ -28,15 +28,8 @@ class Login extends Component {
 
     this.onTextboxChangeSignInEmail = this.onTextboxChangeSignInEmail.bind(this);
     this.onTextboxChangeSignInPassword = this.onTextboxChangeSignInPassword.bind(this);
-    this.onTextboxChangeSignUpStudentId = this.onTextboxChangeSignUpStudentId.bind(this);
-    this.onTextboxChangeSignUpName = this.onTextboxChangeSignUpName.bind(this);
-    this.onTextboxChangeSignUpLastName = this.onTextboxChangeSignUpLastName.bind(this);
-    this.onTextboxChangeSignUpLogin = this.onTextboxChangeSignUpLogin.bind(this);
-    this.onTextboxChangeSignUpEmail = this.onTextboxChangeSignUpEmail.bind(this);
-    this.onTextboxChangeSignUpPassword = this.onTextboxChangeSignUpPassword.bind(this);
     
     this.onSignIn = this.onSignIn.bind(this);
-    this.onSignUp = this.onSignUp.bind(this);
     this.logout = this.logout.bind(this);
   }
 
@@ -76,90 +69,6 @@ class Login extends Component {
     this.setState({
       signInPassword: event.target.value,
     });
-  }
-
-  onTextboxChangeSignUpEmail(event) {
-    this.setState({
-      signUpEmail: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpStudentId(event) {
-    this.setState({
-      signUpstudentId: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpName(event) {
-    this.setState({
-      signUpname: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpLastName(event) {
-    this.setState({
-      signUplastname: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpLogin(event) {
-    this.setState({
-      signUplogin: event.target.value,
-    });
-  }
-
-  onTextboxChangeSignUpPassword(event) {
-    this.setState({
-      signUpPassword: event.target.value,
-    });
-  }
-
-  onSignUp() {
-    // Grab state
-    const {
-      signUpname,
-      signUplastname,
-      signUplogin,
-      signUpstudentId,
-      signUpEmail,
-      signUpPassword,
-    } = this.state;
-
-    this.setState({
-      isLoading: true,
-    });
-
-    // Post request to backend
-    fetch('/api/account/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        student_id: signUpstudentId,
-        name: signUpname, 
-        lastname: signUplastname,
-        login: signUplogin,
-        password: signUpPassword,
-        email: signUpEmail
-      }),
-    }).then(res => res.json())
-      .then(json => {
-        console.log('json', json);
-        if (json.success) {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-            signUpEmail: '',
-            signUpPassword: '',
-          });
-        } else {
-          this.setState({
-            signUpError: json.message,
-            isLoading: false,
-          });
-        }
-      });
   }
 
   onSignIn() {
@@ -246,14 +155,7 @@ class Login extends Component {
       token,
       signInError,
       signInEmail,
-      signInPassword,
-      signUpstudentId,
-      signUpname,
-      signUplastname,
-      signUplogin,
-      signUpEmail,
-      signUpPassword,
-      signUpError,
+      signInPassword
     } = this.state;
 
     if (isLoading) {
@@ -263,86 +165,37 @@ class Login extends Component {
     if (!token) {
       return (
         <div>
-          <div>
+          <Container>
             {
               (signInError) ? (
                 <p>{signInError}</p>
               ) : (null)
             }
-            <p>Sign In</p>
-            <input
-              type="email"
-              placeholder="Email"
-              className="form-group"
-              value={signInEmail}
-              onChange={this.onTextboxChangeSignInEmail}
-            />
-            <br />
-            <input
-              type="password"
-              placeholder="Password"
-              value={signInPassword}
-              className="form-group"
-              onChange={this.onTextboxChangeSignInPassword}
-            />
-            <br />
-            <button className="btn btn-default" onClick={this.onSignIn}>Sign In</button>
-          </div>
-          <br />
-          <br />
-          <div>
-            {
-              (signUpError) ? (
-                <p>{signUpError}</p>
-              ) : (null)
-            }
-            <p>Sign Up</p>
-            <input
-              type="number"
-              placeholder="Codigo Uniandes"
-              value={signUpstudentId}
-              className="form-group"
-              onChange={this.onTextboxChangeSignUpStudentId}
-            /><br />
-            <input
-              type="text"
-              placeholder="Nombre"
-              value={signUpname}
-              className="form-group"
-              onChange={this.onTextboxChangeSignUpName}
-            /><br />
-            <input
-              type="text"
-              placeholder="Apellido"
-              value={signUplastname}
-              className="form-group"
-              onChange={this.onTextboxChangeSignUpLastName}
-            /><br />
-            <input
-              type="text"
-              placeholder="Login"
-              value={signUplogin}
-              className="form-group"
-              onChange={this.onTextboxChangeSignUpLogin}
-            /><br />
-            <input
-              type="email"
-              placeholder="Email"
-              value={signUpEmail}
-              className="form-group"
-              onChange={this.onTextboxChangeSignUpEmail}
-            /><br />
-            <input
-              type="password"
-              placeholder="Password"
-              value={signUpPassword}
-              className="form-group"
-              onChange={this.onTextboxChangeSignUpPassword}
-            /><br />
-            <button className="btn btn-default" onClick={this.onSignUp}>Sign Up</button>
-            
-          </div>
-
+            <h1>Sign In</h1>
+            <Form>
+              <FormGroup>
+                <Label for="email">Email</Label>
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  className="form-group"
+                  value={signInEmail}
+                  onChange={this.onTextboxChangeSignInEmail}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="pass">Password</Label>
+                <Input
+                  type="password"
+                  placeholder="Password"
+                  value={signInPassword}
+                  className="form-group"
+                  onChange={this.onTextboxChangeSignInPassword}
+                />
+              </FormGroup>
+              <Button color="success" onClick={this.onSignIn}>Sign In</Button>
+            </Form>
+          </Container>
         </div>
       );
     }

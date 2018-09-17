@@ -37,7 +37,7 @@ export default class App extends Component {
     if (storage && storage.token) {
       const { name,lastname } = storage;
       button1 = <NavItem>
-        <Button outline  color="info" onClick={()=>{window.location = '/signUp';}} className="mx-1">{name} - {lastname}</Button>
+        <Button outline  color="info" onClick={()=>{window.location = '/signin';}} className="mx-1">{name} {lastname}</Button>
       </NavItem>;
     }
     else{
