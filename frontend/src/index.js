@@ -20,6 +20,9 @@ ReactDOM.render(<FoundObjects />, document.getElementById('foundobjects'));
 ReactDOM.render(<FoundForm />, document.getElementById('foundForm'));
 ReactDOM.render(<LandingPage />, document.getElementById('landing'));
 */
+
+/*Hay algun problema con heroku , pues al intentar desplegar la aplicacion no me dejo continuar despues del login , seria bueno
+revisar eso */ /*Jhon Jairo Gonzalez Melo */
 ReactDOM.render(
   <Router>
     <App>
