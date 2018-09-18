@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import {Jumbotron, Button, Container, Carousel,
-  CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselCaption } from 'reactstrap';
+import {Jumbotron, Button} from 'reactstrap';
   
 export default class LandingPage extends Component {
     

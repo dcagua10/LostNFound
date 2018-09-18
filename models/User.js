@@ -3,9 +3,9 @@ const bcrypt = require('bcrypt');
 require('dotenv').config();
 mongoose.connect(process.env.MONGODB_URI, function (err) {
  
-   if (err) throw err;
+  if (err) throw err;
  
-   console.log('Successfully connected');
+  console.log('Successfully connected');
  
 });
 

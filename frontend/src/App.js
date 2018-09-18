@@ -7,9 +7,8 @@ import {Collapse,
   Nav,
   NavItem,
   Button} from 'reactstrap';
-import {
-  getFromStorage
-} from './storage';
+import {   getFromStorage  } from './storage';
+import PropTypes from 'prop-types';
   
 export default class App extends Component {
     
@@ -43,9 +42,9 @@ export default class App extends Component {
     else{
       button1 = <NavItem>
         <Button color="primary" onClick={()=>{window.location = '/signUp';}} className="mx-1">Sign Up</Button>
-        </NavItem>;
+      </NavItem>;
       button2 = <NavItem>
-      <Button color="success" onClick={()=>{window.location = '/signin';}} className="mx-1">Sign In</Button>
+        <Button color="success" onClick={()=>{window.location = '/signin';}} className="mx-1">Sign In</Button>
       </NavItem>;
     }
       
@@ -83,3 +82,7 @@ export default class App extends Component {
     );
   }
 } 
+
+App.propTypes = {
+  children: PropTypes.node
+};

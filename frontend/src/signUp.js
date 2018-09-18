@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
-import {
-  getFromStorage,
-  deleteInStorage
-} from './storage';
 import { FormGroup,Form,Label,Input,Button,Container } from 'reactstrap';
 
 class signUp extends Component {

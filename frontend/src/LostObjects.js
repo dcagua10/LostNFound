@@ -41,9 +41,9 @@ class LostObjects extends Component {
       <div className="card" key={obj.object_id}>
         <img src={this.renderImage(obj)} alt="Avatar"/>
         <div className="container">
-          <h4><b>{obj.lostby_first_name} {obj.lostby_last_name}</b></h4>
+          <h4>Objeto: {obj.object_name}</h4>
           {/* <p>Object ID: {obj.object_id}</p> */}
-          <p>Objeto: {obj.object_name}</p> 
+          <p><b>{obj.lostby_first_name} {obj.lostby_last_name}</b></p> 
           <p>Lost date: {obj.date}</p>
           <p>Place: {obj.place}</p>
           <p>Description: {obj.description}</p>
