@@ -15,15 +15,17 @@ The instalation can be done through the following steps:
 -Set a local or external database in MongoDB (Optional: Change the JSON available in data folder to load other set of items according to the format)
 
 ## Deployment
-When everything is installed, use cd in CMD to go to the frontend folder and use the following command:
+When everything is installed, use cd in your terminal to go to the frontend folder and use the following command:
 * ```yarn install```
 * ```yarn start```
 
-Open another instance of CMD and go to de root folder an use the following command:
+Open another instance of your terminal and go to de root folder an use the following command:
 * ```npm install```
 * ```npm start```
 
-
+Create a .env file and set
+* ```MONGODB_URI=<mongo_db_url>```
+* ```DB_NAME=lostNFound```
 
 ## Authors
 * [__Daniel Cagua Ennis__](https://github.com/dcagua10)
